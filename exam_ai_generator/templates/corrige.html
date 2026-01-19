@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Générer Corrigé</title>
+<style>
+body { font-family: Arial; background: #f4f4f4; padding: 40px; }
+form {
+    background: white;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+}
+button {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<button type="submit">🚀 Générer le corrigé</button>
+<a href="/" class="btn-retour">⬅ Retour à l'accueil</a>
+
+
+<h2>Génération du corrigé</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    <label>Déposer le sujet :</label>
+    <input type="file" name="sujet_file" required><br><br>
+
+    <label>Format :</label>
+    <input type="radio" name="format" value="pdf" checked> PDF
+    <input type="radio" name="format" value="text"> Texte
+
+    <br><br>
+    <button type="submit">Générer le corrigé</button>
+</form>
+
+<div id="loading" style="display:none; text-align:center; margin-top:20px;">
+    <div class="spinner"></div>
+    <p>L'IA génère le corrigé, veuillez patienter...</p>
+</div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function () {
+    document.getElementById("loading").style.display = "block";
+});
+</script>
+
+<style>
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ddd;
+    border-top: 6px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    
+}
+.btn-retour {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn-retour:hover {
+    background-color: #4CAF50;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+
+</body>
+</html>

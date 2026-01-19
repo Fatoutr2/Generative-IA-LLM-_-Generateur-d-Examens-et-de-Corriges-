@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur d’Examen IA</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #f0f4ff, #e8f7ff);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .inline-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .inline-group label {
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #43a047;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .spinner {
+            width: 55px;
+            height: 55px;
+            border: 6px solid #ddd;
+            border-top: 6px solid #4CAF50;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hint {
+            font-size: 13px;
+            color: #777;
+            margin-top: 5px;
+        }
+        .btn-retour {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.btn-retour:hover {
+    background-color: #d32f2f;
+}
+    </style>
+</head>
+
+<body>
+<button type="submit">🚀 Générer le sujet d’examen</button>
+<a href="/" class="btn-retour">⬅ Retour à l'accueil</a>
+<div class="container">
+    <h2>🎓 Générateur d’Examen Universitaire par IA</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>Cours (PDF, Word ou TXT)</label>
+        <input type="file" name="cours_file" accept=".pdf,.docx,.txt" required>
+        <div class="hint">Le contenu du cours sera analysé par l’IA</div>
+
+        <label>Matière</label>
+        <input type="text" name="matiere" placeholder="Ex : Bases de données" required>
+
+        <label>Durée</label>
+        <div class="inline-group">
+            <label><input type="radio" name="duree" value="1h"> 1h</label>
+            <label><input type="radio" name="duree" value="1h30" checked> 1h30</label>
+            <label><input type="radio" name="duree" value="2h"> 2h</label>
+        </div>
+
+        <label>Niveau</label>
+        <select name="niveau">
+            <option>L1</option>
+            <option>L2</option>
+            <option selected>L3</option>
+            <option>Master 1</option>
+            <option>Master 2</option>
+        </select>
+
+        <label>Nombre de questions</label>
+        <input type="number" name="nb_questions" value="5" min="1">
+
+        <label>Types de questions</label>
+        <div class="inline-group">
+            <label><input type="checkbox" name="types[]" value="QCM" checked> QCM</label>
+            <label><input type="checkbox" name="types[]" value="Questions ouvertes" checked> Questions ouvertes</label>
+            <label><input type="checkbox" name="types[]" value="Exercices"> Exercices</label>
+        </div>
+
+        <label>Difficulté</label>
+        <div class="inline-group">
+            <label><input type="radio" name="difficulte" value="Facile"> Facile</label>
+            <label><input type="radio" name="difficulte" value="Moyenne" checked> Moyenne</label>
+            <label><input type="radio" name="difficulte" value="Difficile"> Difficile</label>
+        </div>
+
+        <label>Format</label>
+        <div class="inline-group">
+            <label><input type="radio" name="format" value="pdf"> PDF</label>
+            <label><input type="radio" name="format" value="texte" checked> Texte</label>
+        </div>
+
+
+        <button type="submit">🚀 Générer le sujet d’examen</button>
+    </form>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>L’IA analyse le cours et génère l’examen…</p>
+    </div>
+</div>
+
+<script>
+document.querySelector("form").addEventListener("submit", function () {
+    document.getElementById("loading").style.display = "block";
+});
+</script>
+
+</body>
+</html>
