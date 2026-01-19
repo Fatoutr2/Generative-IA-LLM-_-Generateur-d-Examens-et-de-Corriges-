@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnement virtuel
+venv/
+env/
+.venv/
+.env/
+
+# Fichiers de configuration de l’IDE
+*.vscode/
+*.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# Base de données SQLite (si utilisée)
+*.db
+
+# Config secrets
+*.env
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Fichiers générés par Flask
+instance/
+*.pyc
